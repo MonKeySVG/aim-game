@@ -8,11 +8,16 @@ import {ScoreService} from "../score.service";
 })
 export class ScoreboardComponent {
   score: number = 0;
+  stats: any;
   constructor(private scoreService: ScoreService) { }
 
   ngOnInit(): void {
     this.scoreService.getScore().subscribe(score => {
       this.score = score;
+    });
+
+    this.scoreService.stats$.subscribe(stats => {
+      this.stats = stats;
     });
   }
 

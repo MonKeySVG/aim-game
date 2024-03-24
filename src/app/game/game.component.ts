@@ -17,6 +17,13 @@ export class GameComponent {
   multiplicator: number = 0;
   combo: number = 0;
 
+
+  // Statistiques
+  longestCombo: number = 0;
+  totalSquaresClicked: number = 0;
+  totalCorrectClicks: number = 0;
+  gameStartTime: number = Date.now();
+
   pointsEarned: {points: number, top: number, left: number}[] = [];
 
   countdownValue: number = this.countdownService.countdownValue;
@@ -57,11 +64,18 @@ export class GameComponent {
   }
 
   toggleSquare(index: number, event: MouseEvent): void {
+    this.totalSquaresClicked++;
     if (this.squares[index])  {
+
 
       this.squares[index] = !this.squares[index];
 
       this.combo++;
+      this.totalCorrectClicks++;
+
+      if (this.combo > this.longestCombo) {
+        this.longestCombo = this.combo;
+      }
 
       if (this.combo % 10 === 0) {
         this.multiplicator++;
@@ -105,6 +119,14 @@ export class GameComponent {
 
       }, 200);
     }
+
+
+    this.scoreService.updateStats({
+      longestCombo: this.longestCombo,
+      totalSquaresClicked: this.totalSquaresClicked,
+      totalCorrectClicks: this.totalCorrectClicks,
+      avgClicksPerSecond: this.totalSquaresClicked / 30
+    });
 
 
   }

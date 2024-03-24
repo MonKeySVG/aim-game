@@ -7,6 +7,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ScoreService {
   private scoreSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
+  private stats = new BehaviorSubject<any>({});
+  stats$ = this.stats.asObservable();
+
   constructor() { }
 
   getScore(): Observable<number> {
@@ -21,5 +24,9 @@ export class ScoreService {
     const currentScore = this.scoreSubject.value;
     const newScore = currentScore + points;
     this.scoreSubject.next(newScore);
+  }
+
+  updateStats(stats: any) {
+    this.stats.next(stats);
   }
 }
