@@ -1,0 +1,17 @@
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 100px;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 2rem;
+  font-family: 'Against', sans-serif;
+}

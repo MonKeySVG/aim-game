@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'aim-game';
+
+  hasGameStarted: boolean = false;
+
+  onPlayClicked() {
+    this.hasGameStarted = true;
+  }
 }

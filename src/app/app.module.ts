@@ -3,10 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { GameComponent } from './game/game.component';
+import { SquareComponent } from './square/square.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    MainMenuComponent,
+    GameComponent,
+    SquareComponent
   ],
   imports: [
     BrowserModule,
