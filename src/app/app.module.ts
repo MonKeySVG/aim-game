@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { GameComponent } from './game/game.component';
 import { SquareComponent } from './square/square.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SquareComponent } from './square/square.component';
     HeaderComponent,
     MainMenuComponent,
     GameComponent,
-    SquareComponent
+    SquareComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,

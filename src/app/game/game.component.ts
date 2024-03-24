@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {CountdownService} from "../countdown.service";
+import {ScoreService} from "../score.service";
 
 @Component({
   selector: 'app-game',
@@ -13,8 +15,23 @@ export class GameComponent {
   lastActiveClickTime: number = 0;
   multiplicatorDelay: number = 500; // Delai en ms
 
+  countdownValue: number = this.countdownService.countdownValue;
+
+  constructor(private countdownService: CountdownService,
+              private scoreService: ScoreService
+  ) { }
+
   ngOnInit() {
     this.newGame();
+
+    this.scoreService.getScore().subscribe(score => {
+      this.score = score;
+    });
+
+    this.countdownService.startCountdown();
+    this.countdownService.countdown.subscribe(value => {
+      this.countdownValue = value;
+    });
   }
   newGame() {
     this.score = 0;
@@ -42,9 +59,9 @@ export class GameComponent {
 
       const currentTime = Date.now();
       if (currentTime - this.lastActiveClickTime <= this.multiplicatorDelay) {
-        this.score += 2; // Gagner 2 points si le clic est rapide
+        this.scoreService.incrementScore(2); // Gagner 2 points si le clic est rapide
       } else {
-        this.score += 1; // Gagner 1 point normalement
+        this.scoreService.incrementScore(1); // Gagner 1 point normalement
       }
       this.lastActiveClickTime = currentTime;
 
