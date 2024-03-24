@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {CountdownService} from "../countdown.service";
 import {ScoreService} from "../score.service";
 
@@ -34,7 +34,7 @@ export class GameComponent {
     });
   }
   newGame() {
-    this.score = 0;
+    this.scoreService.updateScore(0);
     this.squares = Array(9).fill(false);
     this.errors = Array(9).fill(false);
 
@@ -74,11 +74,10 @@ export class GameComponent {
 
       // Active le carré aléatoire
       this.squares[randomIndex] = true;
-      console.log(this.score);
 
     } else {
       this.errors[index] = true; // Définit isError à true pour le carré correspondant
-      this.score -= 10
+      this.scoreService.incrementScore(-10);
       setTimeout(() => {
         this.errors[index] = false; // Réinitialise isError à false après 0.5 seconde
 

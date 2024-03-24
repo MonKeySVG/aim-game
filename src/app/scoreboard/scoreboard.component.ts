@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ScoreService} from "../score.service";
 
 @Component({
@@ -14,5 +14,10 @@ export class ScoreboardComponent {
     this.scoreService.getScore().subscribe(score => {
       this.score = score;
     });
+  }
+
+  @Output() playClicked: EventEmitter<void> = new EventEmitter<void>();
+  onClickPlay() {
+    this.playClicked.emit();
   }
 }

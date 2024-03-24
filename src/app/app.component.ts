@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {CountdownService} from "./countdown.service";
 import {Subscription} from "rxjs";
-
+import {GameComponent} from "./game/game.component";
 
 enum GameState {
   Menu = 'menu',
@@ -26,17 +26,18 @@ export class AppComponent {
 
   private countdownSubscription: Subscription;
 
-
+  @ViewChild('gameComponent') gameComponent!: GameComponent;
 
 
   gameState: GameState = GameState.Menu;
 
   onPlayClicked() {
     this.gameState = GameState.Game;
+    this.gameComponent.newGame();
   }
 
   ngOnDestroy(): void {
-    this.countdownSubscription.unsubscribe(); // Nettoyer la souscription lors de la destruction du composant
+    this.countdownSubscription.unsubscribe();
   }
 
   protected readonly GameState = GameState;

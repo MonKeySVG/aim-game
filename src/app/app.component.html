@@ -5,10 +5,10 @@
 </div>
 
 <div *ngIf="gameState === GameState.Game">
-  <app-game></app-game>
+  <app-game #gameComponent></app-game>
 </div>
 
 <div *ngIf="gameState === GameState.Score">
-  <app-scoreboard></app-scoreboard>
+  <app-scoreboard (playClicked)="onPlayClicked()"></app-scoreboard>
 </div>
 

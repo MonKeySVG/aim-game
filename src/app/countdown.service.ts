@@ -12,11 +12,13 @@ export class CountdownService {
   constructor() { }
 
   startCountdown(): void {
+    this.countdownValue = 30;
     this.countdownInterval = setInterval(() => {
       if (this.countdownValue > 0) {
         this.countdownValue--;
         this.countdown$.next(this.countdownValue);
       } else {
+        this.countdownValue=30;
         clearInterval(this.countdownInterval);
       }
     }, 1000);
