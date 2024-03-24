@@ -64,12 +64,14 @@ export class GameComponent {
 
       const currentTime = Date.now();
       if (currentTime - this.lastActiveClickTime <= this.multiplicatorDelay) {
-        this.scoreService.incrementScore(2); // Gagner 2 points si le clic est rapide
-        const points = currentTime - this.lastActiveClickTime <= this.multiplicatorDelay ? 2 : 1;
+        const points = 2
+        this.scoreService.incrementScore(points); // Gagner 2 points si le clic est rapide
+
         this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
       } else {
-        this.scoreService.incrementScore(1); // Gagner 1 point normalement
-        const points = currentTime - this.lastActiveClickTime <= this.multiplicatorDelay ? 2 : 1;
+        const points = 1
+        this.scoreService.incrementScore(points); // Gagner 1 point normalement
+
         this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
       }
       this.lastActiveClickTime = currentTime;
