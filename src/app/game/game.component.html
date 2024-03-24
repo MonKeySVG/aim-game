@@ -1,7 +1,12 @@
+<div class="score">
+  <h2>{{score}}</h2>
+</div>
+
 <div class="square-container">
   <app-square
     *ngFor="let val of squares; let i = index"
-    [isActive] = val>
+    [isActive] = val
+    (squareClicked)="toggleSquare(i)">
   </app-square>
 
 </div>

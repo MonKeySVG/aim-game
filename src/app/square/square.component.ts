@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-square',
@@ -7,4 +7,11 @@ import {Component, Input} from '@angular/core';
 })
 export class SquareComponent {
   @Input() isActive: boolean = false;
+
+  @Output() squareClicked: EventEmitter<void> = new EventEmitter<void>();
+
+  onClick(): void {
+    // this.isActive = !this.isActive; // Inverse la valeur de isActive
+    this.squareClicked.emit(); // Émet un événement pour notifier le composant parent
+  }
 }
