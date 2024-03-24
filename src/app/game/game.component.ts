@@ -15,6 +15,8 @@ export class GameComponent {
   lastActiveClickTime: number = 0;
   multiplicatorDelay: number = 500; // Delai en ms
 
+  pointsEarned: {points: number, top: number, left: number}[] = [];
+
   countdownValue: number = this.countdownService.countdownValue;
 
   constructor(private countdownService: CountdownService,
@@ -52,16 +54,23 @@ export class GameComponent {
     });
   }
 
-  toggleSquare(index: number): void {
+  toggleSquare(index: number, event: MouseEvent): void {
     if (this.squares[index])  {
+
+
+
       this.squares[index] = !this.squares[index];
 
 
       const currentTime = Date.now();
       if (currentTime - this.lastActiveClickTime <= this.multiplicatorDelay) {
         this.scoreService.incrementScore(2); // Gagner 2 points si le clic est rapide
+        const points = currentTime - this.lastActiveClickTime <= this.multiplicatorDelay ? 2 : 1;
+        this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
       } else {
         this.scoreService.incrementScore(1); // Gagner 1 point normalement
+        const points = currentTime - this.lastActiveClickTime <= this.multiplicatorDelay ? 2 : 1;
+        this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
       }
       this.lastActiveClickTime = currentTime;
 

@@ -8,6 +8,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { GameComponent } from './game/game.component';
 import { SquareComponent } from './square/square.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { PointsEarnedComponent } from './points-earned/points-earned.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ScoreboardComponent } from './scoreboard/scoreboard.component';
     MainMenuComponent,
     GameComponent,
     SquareComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    PointsEarnedComponent
   ],
   imports: [
     BrowserModule,

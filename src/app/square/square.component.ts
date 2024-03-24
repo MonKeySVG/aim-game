@@ -9,11 +9,10 @@ export class SquareComponent {
   @Input() isActive: boolean = false;
   @Input() isError: boolean = false;
 
-  @Output() squareClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() squareClicked: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
-  onClick(): void {
-    // this.isActive = !this.isActive; // Inverse la valeur de isActive
-    this.squareClicked.emit(); // Émet un événement pour notifier le composant parent
+  onClick(event: MouseEvent): void {
+    this.squareClicked.emit(event);
   }
 
   getErrorColor(): string {

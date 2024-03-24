@@ -1,0 +1,6 @@
+.points-earned {
+  position: absolute;
+  font-size: 20px;
+  color: #ff0000;
+  pointer-events: none;
+}
