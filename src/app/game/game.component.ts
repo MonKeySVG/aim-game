@@ -14,6 +14,8 @@ export class GameComponent {
   score: number = 0;
   lastActiveClickTime: number = 0;
   multiplicatorDelay: number = 500; // Delai en ms
+  multiplicator: number = 0;
+  combo: number = 0;
 
   pointsEarned: {points: number, top: number, left: number}[] = [];
 
@@ -57,14 +59,18 @@ export class GameComponent {
   toggleSquare(index: number, event: MouseEvent): void {
     if (this.squares[index])  {
 
-
-
       this.squares[index] = !this.squares[index];
+
+      this.combo++;
+
+      if (this.combo % 10 === 0) {
+        this.multiplicator++;
+      }
 
 
       const currentTime = Date.now();
       if (currentTime - this.lastActiveClickTime <= this.multiplicatorDelay) {
-        const points = 2
+        const points = 1 + this.multiplicator;
         this.scoreService.incrementScore(points); // Gagner 2 points si le clic est rapide
 
         this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
@@ -87,6 +93,8 @@ export class GameComponent {
       this.squares[randomIndex] = true;
 
     } else {
+      this.combo = 0;
+      this.multiplicator = 0;
       this.errors[index] = true; // Définit isError à true pour le carré correspondant
       this.scoreService.incrementScore(-10);
       setTimeout(() => {
