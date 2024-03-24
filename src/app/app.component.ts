@@ -33,9 +33,13 @@ export class AppComponent {
 
   onPlayClicked() {
     this.gameState = GameState.Game;
-    this.gameComponent.newGame();
   }
 
+  ngAfterViewInit() {
+    if (this.gameState === GameState.Game) {
+      this.gameComponent.newGame();
+    }
+  }
   ngOnDestroy(): void {
     this.countdownSubscription.unsubscribe();
   }
