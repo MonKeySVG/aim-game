@@ -2,24 +2,30 @@
   <h2>{{score}}</h2>
 </div>
 
-<app-points-earned
-  *ngFor="let points of pointsEarned; let i = index"
-  [points]="points.points"
-  [top]="points.top"
-  [left]="points.left">
-</app-points-earned>
-
-<div class="square-container">
-
-
-  <app-square
-    *ngFor="let val of squares; let i = index"
-    [isActive] = val
-    [isError] = errors[i]
-    (squareClicked)="toggleSquare(i, $event)">
-  </app-square>
-
+<div class="points-earned-container">
+  <div class="points-earned-wrapper">
+    <app-points-earned
+      *ngFor="let points of pointsEarned; let i = index"
+      [points]="points.points"
+      [top]="points.top"
+      [left]="points.left">
+    </app-points-earned>
+  </div>
 </div>
+
+
+<div class="game-container">
+  <div class="square-container">
+    <app-square
+      *ngFor="let val of squares; let i = index"
+      [isActive] = val
+      [isError] = errors[i]
+      (squareClicked)="toggleSquare(i, $event)">
+    </app-square>
+  </div>
+</div>
+
+
 
 <div class="timer">
   <h2>{{countdownValue}}</h2>

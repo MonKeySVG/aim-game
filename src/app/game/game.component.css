@@ -6,9 +6,17 @@
 
 .square-container {
   display: grid;
-  grid-template-columns: repeat(3, 200px);
+  grid-template-columns: repeat(3, 10vw);
   justify-content: center;
   gap: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .score {
@@ -21,6 +29,11 @@
   text-align: center;
   font-size: 2rem;
   opacity: 0.5;
+}
+
+.points-earned-wrapper {
+  isolation: isolate;
+
 }
 
 

@@ -76,6 +76,7 @@ export class GameComponent {
         this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
       } else {
         const points = 1
+        this.multiplicator = 0;
         this.scoreService.incrementScore(points); // Gagner 1 point normalement
 
         this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
@@ -96,7 +97,9 @@ export class GameComponent {
       this.combo = 0;
       this.multiplicator = 0;
       this.errors[index] = true; // Définit isError à true pour le carré correspondant
-      this.scoreService.incrementScore(-10);
+      const points = -10;
+      this.scoreService.incrementScore(points);
+      this.pointsEarned.push({points, top: event.clientY, left: event.clientX});
       setTimeout(() => {
         this.errors[index] = false; // Réinitialise isError à false après 0.5 seconde
 

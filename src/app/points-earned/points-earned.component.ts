@@ -16,4 +16,8 @@ export class PointsEarnedComponent {
       this.visible = false;
     }, 300); // Hide after 300ms
   }
+
+  getPointsColor(): string {
+    return this.points > 0 ? '#D80032' : '#3D0C11';
+  }
 }

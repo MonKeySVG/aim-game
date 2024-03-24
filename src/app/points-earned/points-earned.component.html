@@ -1,3 +1,3 @@
-<div *ngIf="visible" [style.top.px]="top" [style.left.px]="left" class="points-earned">
+<div *ngIf="visible" [style.top.px]="top" [style.left.px]="left" [style.color]="getPointsColor()" class="points-earned">
   {{points}}
 </div>
