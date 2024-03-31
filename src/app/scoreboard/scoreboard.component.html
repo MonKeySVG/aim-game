@@ -6,7 +6,7 @@
       <label for="name">Name:</label>
       <input id="name" type="text" formControlName="name"  autocomplete="off" maxlength="15" required>
       <div class="button-container">
-        <button type="submit" [disabled]="scoreSubmitted">Submit Score</button>
+        <button type="submit" [disabled]="scoreSubmitted">{{scoreSubmitted ? '✓' : 'Submit Score'}}</button>
       </div>
     </form>
   </div>
