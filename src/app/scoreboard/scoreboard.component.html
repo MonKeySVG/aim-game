@@ -4,7 +4,7 @@
     <h2>Submit Your Score</h2>
     <form [formGroup]="submitScoreForm" (ngSubmit)="onSubmit()">
       <label for="name">Name:</label>
-      <input id="name" type="text" formControlName="name"  autocomplete="off" required>
+      <input id="name" type="text" formControlName="name"  autocomplete="off" maxlength="15" required>
       <div class="button-container">
         <button type="submit" [disabled]="scoreSubmitted">Submit Score</button>
       </div>
