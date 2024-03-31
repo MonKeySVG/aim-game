@@ -17,6 +17,11 @@
 
     <div class="stats">
       <div class="stats-line">
+        <p>Better than :</p>
+        <p>{{betterThanPercentage.toFixed(1)}}%</p>
+      </div>
+
+      <div class="stats-line">
         <p>Longest Combo :</p>
         <p>{{stats.longestCombo}}</p>
       </div>
@@ -43,7 +48,7 @@
   <div class="leaderboard-container">
     <h2>Leaderboard</h2>
     <div class="leaderboard">
-      <div class="leaderboard-row" *ngFor="let score of leaderboard">
+      <div class="leaderboard-row" *ngFor="let score of topScores">
         <p>{{score.name}}</p>
         <p>{{score.score}}</p>
       </div>

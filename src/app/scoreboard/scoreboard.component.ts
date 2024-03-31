@@ -21,7 +21,9 @@ export class ScoreboardComponent {
   score: number = 0;
   stats: any;
   leaderboard: any[] = [];
+  topScores: any[] = [];
   public scoreSubmitted: boolean = false;
+  betterThanPercentage: number = 0;
 
   submitScoreForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required)
@@ -42,6 +44,15 @@ export class ScoreboardComponent {
 
     this.scoreService.getScores().subscribe(scores => {
       this.leaderboard = (Object.values(scores) as ScoreEntry[])
+        .sort((a: ScoreEntry, b: ScoreEntry) => b.score - a.score);
+
+      const sortedScores = [...this.leaderboard];
+      const lowerScoreIndex = sortedScores.findIndex(scoreEntry => scoreEntry.score < this.score);
+      this.betterThanPercentage = lowerScoreIndex !== -1 ? 100 - ((lowerScoreIndex / sortedScores.length) * 100) : 100;
+    });
+
+    this.scoreService.getScores().subscribe(scores => {
+      this.topScores = (Object.values(scores) as ScoreEntry[])
         .sort((a: ScoreEntry, b: ScoreEntry) => b.score - a.score)
         .slice(0, 10);
     });
