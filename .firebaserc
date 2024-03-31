@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "aim-game-834f0"
+  },
+  "targets": {
+    "aim-game-834f0": {
+      "hosting": {
+        "aim-game": [
+          "aim-game-834f0"
+        ]
+      }
+    }
+  }
+}

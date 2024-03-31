@@ -1,29 +1,56 @@
-<div class="final-score">
-  <h1>{{score}}</h1>
 
-  <div class="stats">
-    <div class="stats-line">
-      <p>Longest Combo :</p>
-      <p>{{stats.longestCombo}}</p>
-    </div>
-    <div class="stats-line">
-      <p>Clicks :</p>
-      <p>{{stats.totalSquaresClicked}}</p>
-    </div>
-    <div class="stats-line">
-      <p>Accuracy :</p>
-      <p>{{((stats.totalCorrectClicks / stats.totalSquaresClicked) * 100).toFixed(1)}}%</p>
-    </div>
-    <div class="stats-line">
-      <p>Clicks/s :</p>
-      <p>{{stats.avgClicksPerSecond.toFixed(1)}}</p>
-    </div>
+<div class="scorescreen-container">
+  <div class="form-container">
+    <h2>Submit Your Score</h2>
+    <form [formGroup]="submitScoreForm" (ngSubmit)="onSubmit()">
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name" required>
+      <div class="button-container">
+        <button type="submit">Submit Score</button>
+      </div>
+    </form>
   </div>
 
-  <div class="button-container">
-    <button (click)="onClickPlay()">Play Again</button>
+
+  <div class="final-score">
+    <h1>{{score}}</h1>
+
+    <div class="stats">
+      <div class="stats-line">
+        <p>Longest Combo :</p>
+        <p>{{stats.longestCombo}}</p>
+      </div>
+      <div class="stats-line">
+        <p>Clicks :</p>
+        <p>{{stats.totalSquaresClicked}}</p>
+      </div>
+      <div class="stats-line">
+        <p>Accuracy :</p>
+        <p>{{((stats.totalCorrectClicks / stats.totalSquaresClicked) * 100).toFixed(1)}}%</p>
+      </div>
+      <div class="stats-line">
+        <p>Clicks/s :</p>
+        <p>{{stats.avgClicksPerSecond.toFixed(1)}}</p>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button (click)="onClickPlay()">Play Again</button>
+    </div>
+
   </div>
 
+  <div class="leaderboard-container">
+    <h2>Leaderboard</h2>
+    <div class="leaderboard">
+      <div class="leaderboard-row" *ngFor="let score of leaderboard">
+        <p>{{score.name}}</p>
+        <p>{{score.score}}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 

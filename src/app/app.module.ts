@@ -9,6 +9,8 @@ import { GameComponent } from './game/game.component';
 import { SquareComponent } from './square/square.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { PointsEarnedComponent } from './points-earned/points-earned.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { PointsEarnedComponent } from './points-earned/points-earned.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
