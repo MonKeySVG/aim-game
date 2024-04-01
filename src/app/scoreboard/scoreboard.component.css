@@ -147,3 +147,11 @@ input {
 .major-line {
   font-weight: bold;
 }
+
+label {
+  font-family: "Poppins", sans-serif;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+}
